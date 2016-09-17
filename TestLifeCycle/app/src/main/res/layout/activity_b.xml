@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="onCreate:"
+        android:id="@+id/tv_oncreate1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="onStart:"
+        android:id="@+id/tv_onstart1"
+        android:layout_below="@+id/tv_oncreate1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="onRestart:"
+        android:id="@+id/tv_onrestart1"
+        android:layout_below="@+id/tv_onstart1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="onResume:"
+        android:id="@+id/tv_onresume1"
+        android:layout_below="@+id/tv_onrestart1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="onPause:"
+        android:id="@+id/tv_onpause1"
+        android:layout_below="@+id/tv_onresume1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="onStop:"
+        android:id="@+id/tv_onstop1"
+        android:layout_below="@+id/tv_onpause1"
+        android:layout_alignRight="@+id/tv_onpause1"
+        android:layout_alignEnd="@+id/tv_onpause1" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="onDestroy:"
+        android:id="@+id/tv_ondestroy1"
+        android:layout_below="@+id/tv_onstop1"
+        android:layout_alignRight="@+id/tv_onstop1"
+        android:layout_alignEnd="@+id/tv_onstop1" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tv_numberoncreate1"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tv_oncreate1"
+        android:layout_toEndOf="@+id/tv_oncreate1" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tv_numberonstart1"
+        android:layout_below="@+id/tv_oncreate1"
+        android:layout_toRightOf="@+id/tv_oncreate1"
+        android:layout_toEndOf="@+id/tv_oncreate1" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tv_numberonrestart1"
+        android:layout_alignTop="@+id/tv_onrestart1"
+        android:layout_alignRight="@+id/tv_numberonstart1"
+        android:layout_alignEnd="@+id/tv_numberonstart1" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tv_numberonresume1"
+        android:layout_above="@+id/tv_onpause1"
+        android:layout_toRightOf="@+id/tv_onrestart1"
+        android:layout_toEndOf="@+id/tv_onrestart1" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tv_numberonpause1"
+        android:layout_alignTop="@+id/tv_onpause1"
+        android:layout_toRightOf="@+id/tv_onpause1"
+        android:layout_toEndOf="@+id/tv_onpause1" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tv_numberonstop1"
+        android:layout_alignBottom="@+id/tv_onstop1"
+        android:layout_toRightOf="@+id/tv_onpause1"
+        android:layout_toEndOf="@+id/tv_onpause1" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tv_numberondestroy1"
+        android:layout_alignTop="@+id/tv_ondestroy1"
+        android:layout_alignRight="@+id/tv_numberonstop1"
+        android:layout_alignEnd="@+id/tv_numberonstop1" />
+</RelativeLayout>

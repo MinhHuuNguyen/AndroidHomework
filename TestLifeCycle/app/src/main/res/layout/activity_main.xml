@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.minh.testlifecycle.MainActivity">
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="onCreate:"
+        android:id="@+id/tv_oncreate"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="onStart:"
+        android:id="@+id/tv_onstart"
+        android:layout_below="@+id/tv_oncreate"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/tv_oncreate"
+        android:layout_alignEnd="@+id/tv_oncreate" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="onRestart:"
+        android:id="@+id/tv_onresart"
+        android:layout_below="@+id/tv_onstart"
+        android:layout_alignRight="@+id/tv_onstart"
+        android:layout_alignEnd="@+id/tv_onstart" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="onResume:"
+        android:id="@+id/tv_onresume"
+        android:layout_below="@+id/tv_onresart"
+        android:layout_alignRight="@+id/tv_onresart"
+        android:layout_alignEnd="@+id/tv_onresart" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="onPause:"
+        android:id="@+id/tv_onpause"
+        android:layout_below="@+id/tv_onresume"
+        android:layout_alignRight="@+id/tv_onresume"
+        android:layout_alignEnd="@+id/tv_onresume" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="onStop:"
+        android:id="@+id/tv_onstop"
+        android:layout_below="@+id/tv_onpause"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="onDestroy:"
+        android:id="@+id/tv_ondestroy"
+        android:layout_below="@+id/tv_onstop"
+        android:layout_alignRight="@+id/tv_onstop"
+        android:layout_alignEnd="@+id/tv_onstop" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/tv_numberoncreate"
+        android:layout_alignTop="@+id/tv_oncreate"
+        android:layout_toRightOf="@+id/tv_oncreate"
+        android:layout_toEndOf="@+id/tv_oncreate"
+        android:text="0" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tv_numberonstart"
+        android:layout_below="@+id/tv_numberoncreate"
+        android:layout_toRightOf="@+id/tv_oncreate"
+        android:layout_toEndOf="@+id/tv_oncreate" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tv_numberonrestart"
+        android:layout_below="@+id/tv_numberonstart"
+        android:layout_alignLeft="@+id/tv_numberonstart"
+        android:layout_alignStart="@+id/tv_numberonstart" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tv_numberonresume"
+        android:layout_alignBaseline="@+id/tv_onresume"
+        android:layout_alignBottom="@+id/tv_onresume"
+        android:layout_toRightOf="@+id/tv_onresart"
+        android:layout_toEndOf="@+id/tv_onresart" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tv_numberonpause"
+        android:layout_below="@+id/tv_numberonresume"
+        android:layout_toRightOf="@+id/tv_onresume"
+        android:layout_toEndOf="@+id/tv_onresume" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tv_numberonstop"
+        android:layout_below="@+id/tv_numberonpause"
+        android:layout_alignLeft="@+id/tv_numberonpause"
+        android:layout_alignStart="@+id/tv_numberonpause" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/tv_numberondestroy"
+        android:layout_below="@+id/tv_numberonstop"
+        android:layout_toRightOf="@+id/tv_onstop"
+        android:layout_toEndOf="@+id/tv_onstop" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go To B"
+        android:id="@+id/btn_gotob"
+        android:layout_below="@+id/tv_ondestroy"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
