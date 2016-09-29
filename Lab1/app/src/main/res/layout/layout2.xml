@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout2"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ScrollView
@@ -15,10 +16,11 @@
                 <ImageView
                     android:src="@drawable/girl_dressing"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:background="@color/black"
+                    android:background="@color/fadedblack"
                     android:layout_height="130dp"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
@@ -31,9 +33,7 @@
                         android:textSize="25dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
+                        android:layout_marginLeft="20dp"/>
                     <TextView
                         android:id="@+id/available"
                         android:text="available in many colors"
@@ -42,53 +42,41 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/dress"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
-                    <ImageView
-                        android:src="@drawable/add_to_cart"
-                        android:id="@+id/add_to_cart"
-                        android:layout_width="200dp"
+                        android:layout_marginLeft="20dp"/>
+                    <Button
+                        android:id="@+id/btn_add_to_cart"
+                        android:layout_width="150dp"
                         android:layout_height="50dp"
+                        android:layout_below="@id/available"
                         android:background="@color/red"
-                        android:layout_below="@+id/available"
-                        android:layout_marginTop="10dp"
+                        android:text="ADD TO CART"
                         android:layout_marginLeft="20dp"/>
                     <ImageView
                         android:src="@drawable/share_shape"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/add_to_cart"
-                        android:layout_marginLeft="350dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignBottom="@+id/btn_add_to_cart"
+                        android:layout_marginLeft="330dp"
                         android:id="@+id/imageView" />
                     <ImageView
                         android:src="@drawable/bookmark_shape"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_alignBottom="@+id/imageView"
-                        android:layout_marginLeft="320dp"
+                        android:layout_marginLeft="280dp"
                         android:id="@+id/imageView2" />
                     <ImageView
                         android:src="@drawable/heart_shape"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_alignBottom="@+id/imageView2"
-                        android:layout_marginLeft="290dp"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:alpha="10"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignTop="@+id/relativeLayout">
+                        android:layout_marginLeft="230dp"/>
                 </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
-                android:layout_below="@id/rl_girl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/rl_girl"
                 android:id="@+id/rl_colors">
                 <TextView
                     android:id="@+id/color"
@@ -100,32 +88,44 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginRight="90dp" />
-                <ImageView
-                    android:src="@drawable/black"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/color"
-                    android:layout_marginLeft="90dp"
-                    android:id="@+id/imageView3" />
-                <ImageView
-                    android:src="@drawable/dark_blue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/color"
-                    android:layout_marginLeft="150dp" />
-                <ImageView
-                    android:src="@drawable/light_blue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/color"
-                    android:layout_marginLeft="210dp" />
-                <ImageView
-                    android:src="@drawable/black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/color"
-                    android:layout_marginLeft="270dp" />
-
+                    android:layout_below="@id/color">
+                    <ImageView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp" />
+                    <ImageView
+                        android:padding="10dp"
+                        android:src="@drawable/black"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp" />
+                    <ImageView
+                        android:padding="10dp"
+                        android:src="@drawable/dark_blue"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp" />
+                    <ImageView
+                        android:padding="10dp"
+                        android:src="@drawable/light_blue"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp" />
+                    <ImageView
+                        android:padding="10dp"
+                        android:src="@drawable/black"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp" />
+                    <ImageView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp" />
+                </LinearLayout>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -140,43 +140,59 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"/>
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/size_s"
-                    android:layout_below="@+id/sizes"
-                    android:layout_marginLeft="90dp"/>
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/size_xl"
-                    android:layout_below="@+id/sizes"
-                    android:layout_marginLeft="150dp"/>
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/size_l"
-                    android:layout_below="@+id/sizes"
-                    android:layout_marginLeft="210dp"/>
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/size_xl"
-                    android:layout_below="@+id/sizes"
-                    android:layout_marginLeft="270dp"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sizes">
+                    <ImageView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp" />
+                    <ImageView
+                        android:padding="10dp"
+                        android:src="@drawable/size_s"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp" />
+                    <ImageView
+                        android:padding="10dp"
+                        android:src="@drawable/size_xl"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp" />
+                    <ImageView
+                        android:padding="10dp"
+                        android:src="@drawable/size_l"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp" />
+                    <ImageView
+                        android:padding="10dp"
+                        android:src="@drawable/size_xl"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp" />
+                    <ImageView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp" />
+                </LinearLayout>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl_add_to_cart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/rl_sizes"
-                android:background="@color/olive">
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:background="@color/red">
                 <TextView
                     android:id="@+id/add_to_cart1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:text="ADD TO CART"
-                    android:textSize="35dp"
+                    android:textSize="20dp"
                     android:textColor="@color/white"
                     android:layout_centerInParent="true"/>
             </RelativeLayout>
@@ -186,25 +202,70 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/rl_add_to_cart">
                 <TextView
+                    android:id="@+id/within"
+                    android:paddingTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
-                    android:text="Available within 2-4 business days Express -Delivery available"/>
+                    android:textColor="@color/black"
+                    android:text="Available within 2-4 business days"/>
+                <TextView
+                    android:layout_below="@id/within"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:text="Express -Delivery available"/>
             </RelativeLayout>
             <RelativeLayout
+                android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/description">
                 <TextView
+                    android:id="@+id/detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
-                    android:text="Details
-- various leather applications and patches.
-- Rib knit cuffs and hem.
-- Contains non-textile parts of animal origin
-- Length: medium"/>
+                    android:text="Details"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/various"
+                    android:layout_below="@id/detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:text="- various leather applications and patches."/>
+                <TextView
+                    android:id="@+id/rib"
+                    android:layout_below="@id/various"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:text="- Rib knit cuffs and hem."/>
+                <TextView
+                    android:id="@+id/contains"
+                    android:layout_below="@id/rib"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:text="- Contains non-textile parts of animal origin"/>
+                <TextView
+                    android:id="@+id/lenght"
+                    android:layout_below="@id/contains"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:text="- Length: medium"/>
             </RelativeLayout>
+            <FrameLayout
+                android:id="@+id/frame_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></FrameLayout>
         </RelativeLayout>
     </ScrollView>
 
