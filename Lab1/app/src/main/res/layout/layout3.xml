@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_colors">
+        <TextView
+            android:id="@+id/color"
+            android:text="Colors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="90dp" />
+        <ImageView
+            android:src="@drawable/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/color"
+            android:layout_marginLeft="90dp"
+            android:id="@+id/imageView3" />
+        <ImageView
+            android:src="@drawable/dark_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/color"
+            android:layout_marginLeft="150dp" />
+        <ImageView
+            android:src="@drawable/light_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/color"
+            android:layout_marginLeft="210dp" />
+        <ImageView
+            android:src="@drawable/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/color"
+            android:layout_marginLeft="270dp" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_colors"
+        android:id="@+id/rl_sizes">
+        <TextView
+            android:id="@+id/sizes"
+            android:text="Sizes"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/size_s"
+            android:layout_below="@+id/sizes"
+            android:layout_marginLeft="90dp"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/size_xl"
+            android:layout_below="@+id/sizes"
+            android:layout_marginLeft="150dp"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/size_l"
+            android:layout_below="@+id/sizes"
+            android:layout_marginLeft="210dp"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/size_xl"
+            android:layout_below="@+id/sizes"
+            android:layout_marginLeft="270dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_add_to_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_sizes"
+        android:background="@color/olive">
+        <TextView
+            android:id="@+id/add_to_cart1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADD TO CART"
+            android:textSize="35dp"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_add_to_cart">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Available within 2-4 business days Express -Delivery available"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/description">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Details
+- various leather applications and patches.
+- Rib knit cuffs and hem.
+- Contains non-textile parts of animal origin
+- Length: medium"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

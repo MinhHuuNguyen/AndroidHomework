@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.minh.layout.MainActivity">
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv1_rl1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="THURSDAY, JULY 14"/>
+        <TextView
+            android:id="@+id/tv2_rl1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv1_rl1"
+            android:text="FOR YOU"/>
+        <ImageView
+            android:id="@+id/iv1_rl1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl1">
+        <ImageView
+            android:id="@+id/iv1_rl2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+        <ImageView
+            android:id="@+id/iv2_rl2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/iv1_rl2"
+            android:layout_toEndOf="@+id/iv1_rl2"/>
+        <ImageView
+            android:id="@+id/iv3_rl2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/iv2_rl2"
+            android:layout_toRightOf="@+id/iv1_rl2"
+            android:layout_toEndOf="@+id/iv1_rl2" />
+
+        <ImageView
+            android:id="@+id/iv5_rl2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/iv1_rl2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <ImageView
+            android:id="@+id/iv6_rl2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/iv1_rl2"
+            android:layout_toRightOf="@+id/iv5_rl2"
+            android:layout_toEndOf="@+id/iv5_rl2" />
+        <ImageView
+            android:id="@+id/iv7_rl2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/iv3_rl2"
+            android:layout_toRightOf="@+id/iv3_rl2"
+            android:layout_toEndOf="@+id/iv3_rl2" />
+        <ImageView
+            android:id="@+id/iv8_rl2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/iv9_rl2"
+            android:layout_toRightOf="@+id/iv7_rl2"
+            android:layout_toEndOf="@+id/iv7_rl2" />
+        <ImageView
+            android:id="@+id/iv9_rl2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/iv2_rl2"
+            android:layout_toEndOf="@+id/iv2_rl2" />
+
+        <ImageView
+            android:id="@+id/iv4_rl2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/iv6_rl2"
+            android:layout_toRightOf="@+id/iv1_rl2"
+            android:layout_toEndOf="@+id/iv1_rl2" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl2">
+        <TextView
+            android:id="@+id/tv1_rl3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recently Played"/>
+        <ImageView
+            android:id="@+id/iv1_rl3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignTop="@+id/iv2_rl3"
+            android:layout_toRightOf="@+id/tv1_rl3"
+            android:layout_toEndOf="@+id/tv1_rl3" />
+        <ImageView
+            android:id="@+id/iv2_rl3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/tv1_rl3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <ImageView
+            android:id="@+id/iv3_rl3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/iv2_rl3"/>
+        <ImageView
+            android:id="@+id/iv4_rl3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/iv1_rl3"
+            android:layout_toRightOf="@+id/iv3_rl3"
+            android:layout_toEndOf="@+id/iv3_rl3" />
+        <ImageView
+            android:id="@+id/iv5_rl3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/iv1_rl3"
+            android:layout_toRightOf="@+id/iv6_rl3"
+            android:layout_toEndOf="@+id/iv6_rl3" />
+        <ImageView
+            android:id="@+id/iv6_rl3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/iv1_rl3"
+            android:layout_alignLeft="@+id/iv7_rl3"
+            android:layout_alignStart="@+id/iv7_rl3" />
+        <ImageView
+            android:id="@+id/iv7_rl3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@+id/iv5_rl3"
+            android:layout_toRightOf="@+id/iv1_rl3"
+            android:layout_toEndOf="@+id/iv1_rl3" />
+    </RelativeLayout>
+
+</RelativeLayout>
