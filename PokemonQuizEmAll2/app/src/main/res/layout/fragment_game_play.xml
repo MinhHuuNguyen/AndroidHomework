@@ -1,13 +1,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fl_gameplay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.minh.pokemonquizemall.GamePlayFragment">
     <LinearLayout
+        android:id="@+id/ll_gameplay"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/Gray">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,6 +41,7 @@
                 android:layout_weight="2.2"
                 android:layout_height="match_parent"/>
             <TextView
+                android:id="@+id/tv_score"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
@@ -73,12 +75,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.05"/>
-                <ImageView
-                    android:id="@+id/iv_question"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_weight="1"
-
-                    android:layout_height="0dp" />
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:id="@+id/iv_question"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                    <TextView
+                        android:id="@+id/tv_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -100,56 +109,88 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.05"/>
             <LinearLayout
+                android:id="@+id/ll_group12"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/iv_answer1"
+                <RelativeLayout
+                    android:id="@+id/rl_answer1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:background="@drawable/button"/>
+                    android:background="@drawable/button">
+                    <TextView
+                        android:id="@+id/tv_answer1"
+                        android:text="aaa"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.3"/>
 
-                <ImageView
-                    android:id="@+id/iv_answer2"
+                <RelativeLayout
+                    android:id="@+id/rl_answer2"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:background="@drawable/button"/>
+                    android:background="@drawable/button">
+                    <TextView
+                        android:id="@+id/tv_answer2"
+                        android:text="aaa"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
             </LinearLayout>
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.1"/>
             <LinearLayout
+                android:id="@+id/ll_group34"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/iv_answer3"
+                <RelativeLayout
+                    android:id="@+id/rl_answer3"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:background="@drawable/button"/>
+                    android:background="@drawable/button">
+                    <TextView
+                        android:id="@+id/tv_answer3"
+                        android:text="aaa"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.3"/>
 
-                <ImageView
-                    android:id="@+id/iv_answer4"
+                <RelativeLayout
+                    android:id="@+id/rl_answer4"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:background="@drawable/button"/>
+                    android:background="@drawable/button">
+                    <TextView
+                        android:id="@+id/tv_answer4"
+                        android:text="aaa"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
 
             </LinearLayout>
             <View

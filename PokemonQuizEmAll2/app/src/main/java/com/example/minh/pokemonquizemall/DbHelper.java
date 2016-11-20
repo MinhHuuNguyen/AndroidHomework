@@ -62,6 +62,15 @@ public class DbHelper extends SQLiteAssetHelper {
         return null;
     }
 
+    public String selectRandomName(){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(POKEMON_TABLE_NAME, POKEMON_COLUMNS,null, null, null, null, "RANDOM()", "1");
+        if (cursor.moveToNext()){
+            return cursor.getString(cursor.getColumnIndex(POKEMON_COLUMN_NAME));
+        }
+        return null;
+    }
+
     private static DbHelper instance;
     public static DbHelper getInstance(){
         return instance;

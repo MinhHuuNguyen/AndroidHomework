@@ -1,63 +1,44 @@
 package com.example.minh.pokemonquizemall;
 
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = MainActivity.class.toString();
-    private ImageView ivPlay;
-    private ImageView ivSetting;
+    public int score;
+    public int highScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getReference();
-        setupUIBtnPlay();
         DbHelper.init(this);
-        addListener();
+        changeFragment(new HomeFragment());
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("HighScorePreference",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("highscore", (this.getHighScore()));
+        editor.commit();
+        setHighScore(sharedPreferences.getInt("highscore", -1));
     }
 
-    private void getReference() {
-        ivPlay = (ImageView) findViewById(R.id.iv_play);
-        ivSetting = (ImageView) findViewById(R.id.iv_setting);
+    public int getScore() {
+        return score;
     }
 
-    private void setupUIBtnPlay(){
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        float width = metrics.widthPixels;
-        float height = metrics.heightPixels;
-        float size = width * 0.4f;
-        ivPlay.setLayoutParams(new RelativeLayout.LayoutParams((int)size,(int)size));
-        ivPlay.setX(width / 2 - ivPlay.getLayoutParams().width / 2);
-        ivPlay.setY(height * 5 / 8 - ivPlay.getLayoutParams().height / 2);
+    public void setScore(int score) {
+        this.score = score;
     }
 
-    private  void addListener(){
-        ivPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Clicked play");
-                changeFragment(new GamePlayFragment());
-            }
-        });
-
-        ivSetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeFragment(new SettingFragment());
-                Log.d(TAG, "Clicked setting");
-            }
-        });
+    public int getHighScore() {
+        return highScore;
     }
+
+    public void setHighScore(int highScore) {
+        this.highScore = highScore;
+    }
+
     private void changeFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_container, fragment).addToBackStack(null).commit();
     }
