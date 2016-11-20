@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -23,7 +24,14 @@ public class GamePlayFragment extends Fragment {
     private static final String TAG = MainActivity.class.toString();
     @BindView(R.id.iv_question)
     ImageView ivQuestion;
-
+    @BindView(R.id.iv_answer1)
+    ImageView ivAnswer1;
+    @BindView(R.id.iv_answer2)
+    ImageView ivAnswer2;
+    @BindView(R.id.iv_answer3)
+    ImageView ivAnswer3;
+    @BindView(R.id.iv_answer4)
+    ImageView ivAnswer4;
     public GamePlayFragment() {
         // Required empty public constructor
     }
@@ -34,9 +42,9 @@ public class GamePlayFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_game_play, container, false);
         Pokemon pokemon = DbHelper.getInstance().selectRandomPokemon();
-        String assetPath = "file:///android_asset/flags/";
-        Log.d(TAG, pokemon.getImg().toString());
-        Glide.with(this).load(Uri.parse("file:///android_asset/images/" + pokemon.getImg())).into(ivQuestion);
+        ButterKnife.bind(this, view);
+        Log.d(TAG, pokemon.getImg());
+        Glide.with(this).load("http://goo.gl/gEgYUd").into(ivQuestion);
         return view;
     }
 
