@@ -1,11 +1,18 @@
 package com.example.minh.pokemonquizemall;
 
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+
+import butterknife.BindView;
 
 
 /**
@@ -13,6 +20,9 @@ import android.view.ViewGroup;
  */
 public class GamePlayFragment extends Fragment {
 
+    private static final String TAG = MainActivity.class.toString();
+    @BindView(R.id.iv_question)
+    ImageView ivQuestion;
 
     public GamePlayFragment() {
         // Required empty public constructor
@@ -22,8 +32,12 @@ public class GamePlayFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_game_play, container, false);
+        View view = inflater.inflate(R.layout.fragment_game_play, container, false);
+        Pokemon pokemon = DbHelper.getInstance().selectRandomPokemon();
+        String assetPath = "file:///android_asset/flags/";
+        Log.d(TAG, pokemon.getImg().toString());
+        Glide.with(this).load(Uri.parse("file:///android_asset/images/" + pokemon.getImg())).into(ivQuestion);
+        return view;
     }
 
 }

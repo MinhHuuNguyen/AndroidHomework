@@ -24,27 +24,49 @@
                 android:layout_weight="12"/>
         </LinearLayout>
 
-        <Switch
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Sound Effect"/>
+            android:orientation="horizontal">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.02" />
+            <Switch
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Sound Effect"/>
+        </LinearLayout>
 
-        <Switch
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Music"/>
+            android:orientation="horizontal">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.02" />
+            <Switch
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Music"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
             android:orientation="horizontal">
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -84,6 +106,7 @@
                 android:layout_weight="1.5"
                 android:layout_height="match_parent">
                 <ImageView
+                    android:id="@+id/iv_gen1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/gen1"/>
@@ -101,10 +124,15 @@
                 android:layout_width="0dp"
                 android:layout_weight="1.5"
                 android:layout_height="match_parent">
+
                 <ImageView
+                    android:id="@+id/iv_gen2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/gen2"/>
+                    android:background="@drawable/gen2"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -120,6 +148,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.3"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -133,10 +162,14 @@
                 android:layout_width="0dp"
                 android:layout_weight="1.5"
                 android:layout_height="match_parent">
+
                 <ImageView
+                    android:id="@+id/iv_gen3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/gen3"/>
+                    android:background="@drawable/gen3"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -152,6 +185,7 @@
                 android:layout_weight="1.5"
                 android:layout_height="match_parent">
                 <ImageView
+                    android:id="@+id/iv_gen4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/gen4"/>
@@ -166,6 +200,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"/>
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -175,15 +210,19 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:orientation="horizontal">
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.2"/>
+                android:layout_weight="0.2"
+                android:id="@+id/view2" />
+
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_weight="1.5"
                 android:layout_height="match_parent">
                 <ImageView
+                    android:id="@+id/iv_gen5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/gen5"/>
@@ -202,6 +241,7 @@
                 android:layout_weight="1.5"
                 android:layout_height="match_parent">
                 <ImageView
+                    android:id="@+id/iv_gen6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/gen6"/>
@@ -216,10 +256,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"/>
         </LinearLayout>
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4">
-        </LinearLayout>
+            android:layout_weight="4"/>
     </LinearLayout>
 </FrameLayout>
