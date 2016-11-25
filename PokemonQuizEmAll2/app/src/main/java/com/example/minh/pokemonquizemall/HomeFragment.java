@@ -1,11 +1,12 @@
 package com.example.minh.pokemonquizemall;
 
 
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +17,13 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static android.content.Context.MODE_PRIVATE;
-
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
 
+    private static final String TAG = MainActivity.class.toString();
     @BindView(R.id.iv_play)
     ImageView ivPlay;
     @BindView(R.id.iv_setting)
@@ -32,6 +32,9 @@ public class HomeFragment extends Fragment {
     TextView tvCurrentScore;
     @BindView(R.id.tv_high_score)
     TextView tvHighScore;
+
+    public MediaPlayer mediaPlayerSound;
+    public MediaPlayer mediaPlayer;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -43,6 +46,12 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, rootView);
+        mediaPlayerSound = MediaPlayer.create(getContext(), R.raw.uiclick);
+        Log.d(TAG, String.format("aaaaaaaaaaaaaaaaaaaaaa %s",((MainActivity)getActivity()).isPlayedMusic));
+        if (((MainActivity) getActivity()).isPlayedMusic == true) {
+            ((MainActivity) getActivity()).homeMediaPlayer.start();
+//            ((MainActivity) getActivity()).homeMediaPlayer.release();
+        }else ;
         setupUIBtnPlay();
         addListener();
         setFontTextview("fonts/PoplarStd.ttf", tvHighScore);
@@ -73,8 +82,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 changeFragment(new GamePlayFragment());
-                ivPlay.setClickable(false);
-                ivSetting.setClickable(false);
+                checkSound(((MainActivity)getActivity()).isPlayedSound, mediaPlayerSound);
             }
         });
 
@@ -82,11 +90,15 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 changeFragment(new SettingFragment());
-                onPause();
-                ivPlay.setClickable(false);
-                ivSetting.setClickable(false);
+                checkSound(((MainActivity)getActivity()).isPlayedSound, mediaPlayerSound);
             }
         });
+    }
+
+    private void checkSound(boolean isPlayedSound, MediaPlayer mediaPlayer){
+        if (isPlayedSound) {
+            mediaPlayer.start();
+        }else;
     }
 
     private void changeFragment(Fragment fragment) {

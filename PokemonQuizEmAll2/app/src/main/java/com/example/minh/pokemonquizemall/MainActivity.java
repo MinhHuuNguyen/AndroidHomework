@@ -1,6 +1,7 @@
 package com.example.minh.pokemonquizemall;
 
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,11 +10,17 @@ public class MainActivity extends AppCompatActivity {
 
     public int score;
     public int highScore;
+    public MediaPlayer homeMediaPlayer;
+    public MediaPlayer playMediaPLayer;
+    public boolean isPlayedMusic = true;
+    public boolean isPlayedSound = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        homeMediaPlayer = MediaPlayer.create(this,R.raw.homemusic);
+        playMediaPLayer = MediaPlayer.create(this, R.raw.playmusic);
         DbHelper.init(this);
         changeFragment(new HomeFragment());
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("HighScorePreference",MODE_PRIVATE);
@@ -21,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
         editor.putInt("highscore", (this.getHighScore()));
         editor.commit();
         setHighScore(sharedPreferences.getInt("highscore", -1));
+    }
+
+    public MediaPlayer getHomeMediaPlayer() {
+        return homeMediaPlayer;
+    }
+
+    public void setHomeMediaPlayer(MediaPlayer homeMediaPlayer) {
+        this.homeMediaPlayer = homeMediaPlayer;
     }
 
     public int getScore() {

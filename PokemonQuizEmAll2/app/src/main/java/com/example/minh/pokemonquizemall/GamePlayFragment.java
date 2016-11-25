@@ -1,23 +1,28 @@
 package com.example.minh.pokemonquizemall;
 
 
-import android.content.res.AssetManager;
+import android.animation.AnimatorInflater;
+import android.animation.ObjectAnimator;
+import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Typeface;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -65,18 +70,27 @@ public class GamePlayFragment extends Fragment {
     RelativeLayout rlAnswer3;
     @BindView(R.id.rl_answer4)
     RelativeLayout rlAnswer4;
+    @BindView(R.id.rl_question)
+    RelativeLayout rlQuestion;
 
     @BindView(R.id.tv_score)
     TextView tvScore;
 
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+
     private String namePokemon1;
     private String namePokemon2;
     private String namePokemon3;
-    private int position;
+
+    private int count = 0;
+
+    private CountDownTimer countDownTimer;
 
     private View viewAnswerTrue;
-    private View viewAnswer;
-    private AssetManager assetManager;
+    public MediaPlayer mediaPlayerMusic;
+    public MediaPlayer mediaPlayerSound;
+
     public GamePlayFragment() {
         // Required empty public constructor
     }
@@ -87,10 +101,17 @@ public class GamePlayFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_game_play, container, false);
         ButterKnife.bind(this, rootView);
-
+//        if (((MainActivity)getActivity()).isPlayedMusic) {
+//            ((MainActivity) getActivity()).homeMediaPlayer.stop();
+//            ((MainActivity) getActivity()).homeMediaPlayer.release();
+//            ((MainActivity) getActivity()).playMediaPLayer.start();
+//            ((MainActivity) getActivity()).playMediaPLayer.release();
+//        }
+//        ObjectAnimator animator = ObjectAnimator.
         Pokemon pokemon = DbHelper.getInstance().selectRandomPokemon();
+        setupProgressBar(pokemon);
         Random random = new Random();
-        position = random.nextInt(4) + 1;
+        int position = random.nextInt(4) + 1;
         Log.d(TAG, pokemon.getName());
         viewAnswerTrue = setupUIFromPokemon(pokemon, position);
         tvScore.setText(String.format("%s",((MainActivity)getActivity()).getScore()));
@@ -99,7 +120,35 @@ public class GamePlayFragment extends Fragment {
         setNamePokemon3(pokemon);
         setTextAnswer(position);
         addListener(pokemon);
+        addMusic();
         return rootView;
+    }
+
+    private void setupProgressBar(Pokemon pokemon) {
+        progressBar.setRotation(180);
+        progressBar.setProgress(count);
+        progressBar.setProgressDrawable(getResources().getDrawable(R.drawable.custom_progressbar));
+        countDownTimer = new CountDownTimer(20000,1000) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                count++;
+                progressBar.setProgress(count);
+            }
+
+            @Override
+            public void onFinish() {
+                changeFragment(new HomeFragment());
+                count++;
+                progressBar.setProgress(count);
+            }
+        };
+        countDownTimer.start();
+    }
+
+    private void addMusic() {
+        mediaPlayerMusic = MediaPlayer.create(getContext(),R.raw.playmusic);
+        mediaPlayerMusic.start();
     }
 
     private void addListener(final Pokemon pokemon) {
@@ -107,73 +156,90 @@ public class GamePlayFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (rlAnswer1 == viewAnswerTrue){
-                    rlAnswer1.setBackgroundColor(Color.parseColor("#32CD32"));
-                    moveToNextQuestion(true);
+                    rlAnswer1.setBackgroundResource(R.drawable.clicked_true);
+                    ((MainActivity)getActivity()).setScore(((MainActivity)getActivity()).getScore() + 1);
+                    mediaPlayerSound = MediaPlayer.create(getContext(), R.raw.trueanswer);
                 }else {
-                    rlAnswer1.setBackgroundColor(Color.parseColor("#FF0000"));
-                    viewAnswerTrue.setBackgroundColor(Color.parseColor("#32CD32"));
-                    moveToNextQuestion(false);
+                    rlAnswer1.setBackgroundResource(R.drawable.clicked_false);
+                    viewAnswerTrue.setBackgroundResource(R.drawable.clicked_true);
+                    mediaPlayerSound = MediaPlayer.create(getContext(), R.raw.falseanswer);
                 }
-                tvTag.setText(pokemon.getTag());
+                animationOut();
+                mediaPlayerSound.start();
+                tvTag.setText(String.format("%s %s", pokemon.getTag(), pokemon.getName()));
                 disableClick(rlAnswer2, rlAnswer3, rlAnswer4);
+
+                moveToNextQuestion(new GamePlayFragment());
             }
         });
         rlAnswer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (rlAnswer2 == viewAnswerTrue){
-                    rlAnswer2.setBackgroundColor(Color.parseColor("#32CD32"));
-                    moveToNextQuestion(true);
+                    rlAnswer2.setBackgroundResource(R.drawable.clicked_true);
+                    ((MainActivity)getActivity()).setScore(((MainActivity)getActivity()).getScore() + 1);
+                    mediaPlayerSound = MediaPlayer.create(getContext(), R.raw.trueanswer);
                 }else {
-                    rlAnswer2.setBackgroundColor(Color.parseColor("#FF0000"));
-                    viewAnswerTrue.setBackgroundColor(Color.parseColor("#32CD32"));
-                    moveToNextQuestion(false);
+                    rlAnswer2.setBackgroundResource(R.drawable.clicked_false);
+                    viewAnswerTrue.setBackgroundResource(R.drawable.clicked_true);
+                    mediaPlayerSound = MediaPlayer.create(getContext(), R.raw.falseanswer);
                 }
-                tvTag.setText(pokemon.getTag());
+                mediaPlayerSound.start();
+                tvTag.setText(String.format("%s %s", pokemon.getTag(), pokemon.getName()));
                 disableClick(rlAnswer1, rlAnswer3, rlAnswer4);
+                moveToNextQuestion(new GamePlayFragment());
             }
         });
         rlAnswer3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (rlAnswer3 == viewAnswerTrue){
-                    rlAnswer3.setBackgroundColor(Color.parseColor("#32CD32"));
-                    moveToNextQuestion(true);
+                    rlAnswer3.setBackgroundResource(R.drawable.clicked_true);
+                    ((MainActivity)getActivity()).setScore(((MainActivity)getActivity()).getScore() + 1);
+                    mediaPlayerSound = MediaPlayer.create(getContext(), R.raw.trueanswer);
                 }else {
-                    rlAnswer3.setBackgroundColor(Color.parseColor("#FF0000"));
-                    viewAnswerTrue.setBackgroundColor(Color.parseColor("#32CD32"));
-                    moveToNextQuestion(false);
+                    rlAnswer3.setBackgroundResource(R.drawable.clicked_false);
+                    viewAnswerTrue.setBackgroundResource(R.drawable.clicked_true);
+                    mediaPlayerSound = MediaPlayer.create(getContext(), R.raw.falseanswer);
                 }
-                tvTag.setText(pokemon.getTag());
+                mediaPlayerSound.start();
+                tvTag.setText(String.format("%s %s", pokemon.getTag(), pokemon.getName()));
                 disableClick(rlAnswer1, rlAnswer2, rlAnswer4);
+                moveToNextQuestion(new GamePlayFragment());
             }
         });
         rlAnswer4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (rlAnswer4 == viewAnswerTrue){
-                    rlAnswer4.setBackgroundColor(Color.parseColor("#32CD32"));
-                    moveToNextQuestion(true);
+                    rlAnswer4.setBackgroundResource(R.drawable.clicked_true);
+                    ((MainActivity)getActivity()).setScore(((MainActivity)getActivity()).getScore() + 1);
+                    mediaPlayerSound = MediaPlayer.create(getContext(), R.raw.trueanswer);
                 }else {
-                    rlAnswer4.setBackgroundColor(Color.parseColor("#FF0000"));
-                    viewAnswerTrue.setBackgroundColor(Color.parseColor("#32CD32"));
-                    moveToNextQuestion(false);
+                    rlAnswer4.setBackgroundResource(R.drawable.clicked_false);
+                    viewAnswerTrue.setBackgroundResource(R.drawable.clicked_true);
+                    mediaPlayerSound = MediaPlayer.create(getContext(), R.raw.falseanswer);
                 }
-                tvTag.setText(pokemon.getTag());
+                mediaPlayerSound.start();
+                tvTag.setText(String.format("%s %s", pokemon.getTag(), pokemon.getName()));
                 disableClick(rlAnswer1, rlAnswer2, rlAnswer3);
+                moveToNextQuestion(new GamePlayFragment());
             }
         });
     }
-
 
     private View setupUIFromPokemon(Pokemon pokemon, int position){
         try {
             InputStream ims = getActivity().getAssets().open(pokemon.getImg());
             Drawable d = Drawable.createFromStream(ims, null);
+//            BitmapDrawable bitmap = (BitmapDrawable) BitmapDrawable.createFromStream(ims, null);
             ivQuestion.setImageDrawable(d);
+//            ivQuestion.setImageBitmap(createShadowBitmap(bitmap));
+            animationIn();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         flGamePlay.setBackgroundColor(Color.parseColor(pokemon.getColor()));
         switch (position) {
             case 1:
@@ -199,19 +265,11 @@ public class GamePlayFragment extends Fragment {
         relativeLayout3.setClickable(false);
     }
 
-    private void moveToNextQuestion(final boolean isTrue){
+    private void moveToNextQuestion(final Fragment fragment){
         new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (isTrue){
-                    changeFragment(new GamePlayFragment());
-                    ((MainActivity)getActivity()).setScore(((MainActivity)getActivity()).getScore() + 1);
-                }else {
-                    changeFragment(new HomeFragment());
-                    if (((MainActivity)getActivity()).getScore() >= ((MainActivity)getActivity()).getHighScore()){
-                        ((MainActivity)getActivity()).setHighScore((((MainActivity)getActivity()).getScore()));
-                    }else;
-                }
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_container, fragment).commit();
             }
         }, 3000);
     }
@@ -263,7 +321,40 @@ public class GamePlayFragment extends Fragment {
         }
     }
 
+    private void animationOut(){
+        ObjectAnimator animator = (ObjectAnimator) AnimatorInflater.loadAnimator(getContext(),R.animator.animator_flip);
+        animator.setTarget(ivQuestion);
+        animator.setDuration(300);
+        animator.start();
+        new android.os.Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate_in);
+                rlQuestion.startAnimation(animation);
+            }
+        }, 1000);
+    }
+
+    private void animationIn(){
+        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.anim_translate_out);
+        rlQuestion.startAnimation(animation);
+    }
+
+    private Bitmap createShadowBitmap(Bitmap bitmap){
+        Bitmap bm = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), bitmap.getConfig());
+        for (int i =0; i < bitmap.getWidth(); i++){
+            for (int j =0; j < bitmap.getHeight(); j++){
+                int p = bitmap.getPixel(i, j);
+                int alpha = Color.alpha(p);
+                if (alpha != 0){
+                    bm.setPixel(i, j, Color.BLACK);
+                }
+            }
+        }
+        return bm;
+    }
+
     private void changeFragment(Fragment fragment) {
-        this.getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_container, fragment).addToBackStack(null).commit();
+        this.getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_container, fragment).commit();
     }
 }
